@@ -44,7 +44,7 @@
 |                         StringBuffer                         |                        StringBulider                         |
 |             线程安全（方法用 synchronized 修饰）             |                          线程不安全                          |
 | 缓冲区（ StringBuffer 每次获取 toString 都会直接使用缓冲区的 toStringCache 来构造字符） | 无缓冲区（ StringBuilder 每次需要复制一次字符串数组，再构造一个字符串） |
-|                    性能不如StringBulider                     |           性能大于StringBuffer（方法没有加锁同步）           |
+|                     性能不如StringBuffer                     |          性能大于StringBuilder（方法没有加锁同步）           |
 
 >+ StringBuffer 适用于多线程在造作同一个 StringBuffer 的场景，单线程场合更适合 StringBuilder ；
 >+ String 为字符串常量，指向一个地址；而 StringBuffer 和 StringBuilder 是字符串变量；
@@ -115,23 +115,11 @@
 >   > + 版本号机制：在数据库表中增加数据版本字段（version），表示数据修改次数。提交更新时，更新版本号，且提交版本必须大于当前版本号；
 >   > + CAS 算法：涉及三个操作数 V (需要读写的内存值)、A (进行比较的值)、B (准备写入的新值)。当 V 的值等于 A 的时候，CAS 通过原子方式用新值 B 更新 V，且不断重试（自旋操作）；
 
-
-
-
-
-
-
-
-
-
-
-
-
 ## 常见问题
 
 ### 1. yield 方法
 
 >+ 作用：暂停当前执行的线程对象，并执行其他线程。yield() 是让当前运行线程回到可运行状态，以允许其他拥有相同优先级的线程获得运行机会。但是，无法保证让线程让步，当前线程仍具有可能再次被选中。
 
-###2. 
+
 
